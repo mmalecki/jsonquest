@@ -10,11 +10,8 @@ var server = http.createServer(cb(function (req, res) {
   assert.equal(req.url, '/hello');
   assert.equal(req.headers['content-type'], 'application/json');
 
-  req.on('readable', function () {
-    var chunk = req.read();
-    if (chunk) {
-      data += chunk;
-    }
+  req.on('data', function (chunk) {
+    data += chunk;
   });
 
   req.on('end', function () {
