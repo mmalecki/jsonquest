@@ -9,5 +9,9 @@
   },
   "scripts": {
     "test": "node test/jsonquest-test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mmalecki/jsonquest.git"
   }
 }
