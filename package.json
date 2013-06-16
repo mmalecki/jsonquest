@@ -1,0 +1,12 @@
+{
+  "name": "jsonquest",
+  "version": "0.0.0",
+  "author": "Maciej Małecki <me@mmalecki.com>",
+  "main": "./lib/jsonquest.js",
+  "devDependencies": {
+    "assert-called": "0.1.x"
+  },
+  "scripts": {
+    "test": "node test/jsonquest-test.js"
+  }
+}
