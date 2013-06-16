@@ -11,14 +11,14 @@ var server = http.createServer(cb(function (req, res) {
   assert.equal(req.headers['content-type'], 'application/json');
 
   req.on('data', function (chunk) {
-    data += chunk;
+    data += chunk.toString('utf8');
   });
 
   req.on('end', function () {
-    assert.deepEqual(JSON.parse(data), { hello: 'world' });
+    assert.deepEqual(JSON.parse(data), { hello: 'world', witaj: 'świecie' });
 
     res.writeHead(201, { 'content-type': 'application/json' });
-    res.write(JSON.stringify({ world: 'hello' }));
+    res.write(JSON.stringify({ world: 'hello', świecie: 'witaj' }));
     res.end();
   });
 })).listen(9999, cb(function () {
@@ -26,12 +26,12 @@ var server = http.createServer(cb(function (req, res) {
     host: 'localhost',
     port: 9999,
     path: '/hello',
-    body: { hello: 'world' },
+    body: { hello: 'world', witaj: 'świecie' },
     method: 'PUT',
     protocol: 'http'
   }, cb(function (err, res, body) {
     assert.equal(res.statusCode, 201);
-    assert.deepEqual(body, { world: 'hello' });
+    assert.deepEqual(body, { world: 'hello', świecie: 'witaj' });
     assert.equal(res.headers['content-type'], 'application/json');
 
     server.close();
