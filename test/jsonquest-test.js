@@ -9,6 +9,7 @@ var server = http.createServer(cb(function (req, res) {
   assert.equal(req.method, 'PUT');
   assert.equal(req.url, '/hello');
   assert.equal(req.headers['content-type'], 'application/json');
+  assert.equal(req.headers.authorization, 'Basic dXNlcjpwYXNz');
 
   req.on('data', function (chunk) {
     data += chunk.toString('utf8');
@@ -28,7 +29,8 @@ var server = http.createServer(cb(function (req, res) {
     path: '/hello',
     body: { hello: 'world', witaj: 'świecie' },
     method: 'PUT',
-    protocol: 'http'
+    protocol: 'http',
+    auth: 'user:pass'
   }, cb(function (err, res, body) {
     assert.equal(res.statusCode, 201);
     assert.deepEqual(body, { world: 'hello', świecie: 'witaj' });
