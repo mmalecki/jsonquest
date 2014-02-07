@@ -1,7 +1,7 @@
 {
   "name": "jsonquest",
   "description": "A simple HTTP(S) client for JSON APIs",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "Maciej Małecki <me@mmalecki.com>",
   "main": "./lib/jsonquest.js",
   "devDependencies": {
