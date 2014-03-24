@@ -27,7 +27,7 @@ var server = http.createServer(cb(function (req, res) {
     host: 'localhost',
     port: 9999,
     path: '/hello',
-    body: { hello: 'world', witaj: 'świecie', },
+    body: { hello: 'world', witaj: 'świecie' },
     method: 'PUT',
     protocol: 'http',
     auth: 'user:pass'
@@ -69,7 +69,7 @@ var server2 = http.createServer(cb(function (req, res) {
     host: 'localhost',
     port: 9998,
     path: '/hello',
-    body: { hello: 'world', witaj: 'świecie', },
+    body: { hello: 'world', witaj: 'świecie' },
     method: 'PUT',
     protocol: 'http',
     auth: 'user:pass'
@@ -103,7 +103,7 @@ var server3 = http.createServer(cb(function (req, res) {
     host: 'localhost',
     port: 9997,
     path: '/hello',
-    body: { hello: 'world', witaj: 'świecie', },
+    body: { hello: 'world', witaj: 'świecie' },
     method: 'PUT',
     protocol: 'http',
     auth: 'user:pass'
