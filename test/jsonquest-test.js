@@ -41,45 +41,6 @@ var server = http.createServer(cb(function (req, res) {
   }));
 }));
 
-var http = require('http'),
-    assert = require('assert'),
-    cb = require('assert-called'),
-    jsonquest = require('../');
-
-var server2 = http.createServer(cb(function (req, res) {
-  var data = '';
-
-  assert.equal(req.method, 'PUT');
-  assert.equal(req.url, '/hello');
-  assert.equal(req.headers['content-type'], 'application/json');
-  assert.equal(req.headers.authorization, 'Basic dXNlcjpwYXNz');
-
-  req.on('data', function (chunk) {
-    data += chunk.toString('utf8');
-  });
-
-  req.on('end', function () {
-    assert.deepEqual(JSON.parse(data), { hello: 'world', witaj: 'świecie' });
-
-    res.writeHead(201, { 'content-type': 'application/json' });
-    res.write(JSON.stringify({err: 'This is an error' }));
-    res.end();
-  });
-})).listen(9998, cb(function () {
-  jsonquest({
-    host: 'localhost',
-    port: 9998,
-    path: '/hello',
-    body: { hello: 'world', witaj: 'świecie' },
-    method: 'PUT',
-    protocol: 'http',
-    auth: 'user:pass'
-  }, cb(function (err, res, body) {
-    assert(err);
-    server2.close();
-  }));
-}));
-
 var server3 = http.createServer(cb(function (req, res) {
   var data = '';
 
